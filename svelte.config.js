@@ -1,9 +1,18 @@
 import adapter from '@sveltejs/adapter-static';
 
-export default {
-  kit: {
-    adapter: adapter({
-      fallback: 'index.html'  // <- this makes dynamic routes work as SPA
-    })
-  }
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+	kit: {
+		adapter: adapter({
+			fallback: 'index.html',
+      		pages: 'build',
+      		assets: 'build'
+		}),
+		paths: {
+			base: "/cottonbytes"
+		}
+	}
 };
+
+
+export default config;
